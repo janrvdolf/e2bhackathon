@@ -27,3 +27,5 @@ Create a custon E2B sandbox.
 ## Run
 
 > python main.py
+
+Generated neural network architectures are stored in *generated_nn_architectures* dir and their training logs are stored in *generated_nn_architectures_training*. 
