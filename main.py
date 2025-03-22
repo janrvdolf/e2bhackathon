@@ -12,7 +12,7 @@ from e2b_code_interpreter import Sandbox
 args_parser = argparse.ArgumentParser()
 args_parser.add_argument(
     "--number_of_nn_architectures",
-    default=1,
+    default=5,
     type=int,
     help="Number of neural networks you want to generate.",
 )
@@ -115,7 +115,7 @@ for i in range(args.number_of_nn_architectures):
 print("\n🤖 Picking the best neural network...")
 
 system_prompt = "You are a helpful assistant and an expert in neural networks." ""
-prompt = f"You are given {args.number_of_nn_architectures} neural network architectures trained on MNIST dataset. Choose the best one and explain why. Return JSON."
+prompt = f'You are given {args.number_of_nn_architectures} neural network architectures trained on MNIST dataset. Choose the best one and explain why. Return JSON {{"best_network": <int>., "explanation": <str>}}.'
 
 train_outputs_prompts = []
 for i in range(args.number_of_nn_architectures):
@@ -143,18 +143,38 @@ response = client.messages.create(
     ],
 )
 
-print("Response: ")
-print(response.content[0])
-
 response_json = json.loads(response.content[0].text)
 
-print("JSON reponse: ", response_json)
 
+print("🏆 The best network: ")
+print("Best network: ", response_json["best_network"])
+print("Explanation: ", response_json["explanation"])
+
+print("\n Architecture:")
+print(
+    open(
+        os.path.join(
+            args.output_dir,
+            f"__output_code_{response_json['best_network']}.py",
+        ),
+        "r",
+    ).read()
+)
+
+
+print("\n Training run:")
+print(
+    open(
+        os.path.join(
+            args.output_dir_training,
+            f"train{response_json['best_network']}.txt",
+        ),
+        "r",
+    ).read()
+)
 
 # Extract code from response
 explanation = response.content[0].text
-
-print("The best neural network: ", explanation)
 
 with open("best_neural_network.txt", "w") as f:
     f.write(explanation)
