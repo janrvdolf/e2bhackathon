@@ -1,0 +1,25 @@
+The following model has been created: Sequential(
+  (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(1, 1))
+  (1): ReLU()
+  (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1))
+  (3): ReLU()
+  (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (5): Dropout2d(p=0.25, inplace=False)
+  (6): Flatten(start_dim=1, end_dim=-1)
+  (7): Linear(in_features=9216, out_features=128, bias=True)
+  (8): ReLU()
+  (9): Dropout(p=0.5, inplace=False)
+  (10): Linear(in_features=128, out_features=10, bias=True)
+  (11): LogSoftmax(dim=1)
+)
+Epoch 1/10 5.2s train_loss=0.2424 train_accuracy=0.9277 dev_loss=0.0493 dev_accuracy=0.9866
+Epoch 2/10 4.5s train_loss=0.0960 train_accuracy=0.9715 dev_loss=0.0431 dev_accuracy=0.9882
+Epoch 3/10 4.4s train_loss=0.0729 train_accuracy=0.9783 dev_loss=0.0436 dev_accuracy=0.9882
+Epoch 4/10 4.5s train_loss=0.0592 train_accuracy=0.9815 dev_loss=0.0352 dev_accuracy=0.9906
+Epoch 5/10 4.3s train_loss=0.0490 train_accuracy=0.9849 dev_loss=0.0344 dev_accuracy=0.9916
+Epoch 6/10 4.3s train_loss=0.0437 train_accuracy=0.9867 dev_loss=0.0353 dev_accuracy=0.9926
+Epoch 7/10 4.4s train_loss=0.0396 train_accuracy=0.9875 dev_loss=0.0390 dev_accuracy=0.9918
+Epoch 8/10 4.4s train_loss=0.0334 train_accuracy=0.9897 dev_loss=0.0373 dev_accuracy=0.9910
+Epoch 9/10 4.5s train_loss=0.0312 train_accuracy=0.9897 dev_loss=0.0366 dev_accuracy=0.9914
+Epoch 10/10 4.4s train_loss=0.0271 train_accuracy=0.9907 dev_loss=0.0320 dev_accuracy=0.9936
+Epoch 10 0.4s test_loss=0.0276 test_accuracy=0.9922

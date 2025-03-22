@@ -1,0 +1,19 @@
+The following model has been created: Sequential(
+  (0): Flatten(start_dim=1, end_dim=-1)
+  (1): Linear(in_features=784, out_features=128, bias=True)
+  (2): ReLU()
+  (3): Linear(in_features=128, out_features=64, bias=True)
+  (4): ReLU()
+  (5): Linear(in_features=64, out_features=10, bias=True)
+)
+Epoch 1/10 3.4s train_loss=0.2734 train_accuracy=0.9206 dev_loss=0.1116 dev_accuracy=0.9678
+Epoch 2/10 3.2s train_loss=0.1143 train_accuracy=0.9651 dev_loss=0.0934 dev_accuracy=0.9722
+Epoch 3/10 3.0s train_loss=0.0791 train_accuracy=0.9762 dev_loss=0.0765 dev_accuracy=0.9764
+Epoch 4/10 3.0s train_loss=0.0589 train_accuracy=0.9815 dev_loss=0.0799 dev_accuracy=0.9762
+Epoch 5/10 3.1s train_loss=0.0472 train_accuracy=0.9851 dev_loss=0.0801 dev_accuracy=0.9776
+Epoch 6/10 3.1s train_loss=0.0361 train_accuracy=0.9884 dev_loss=0.0811 dev_accuracy=0.9778
+Epoch 7/10 3.1s train_loss=0.0293 train_accuracy=0.9907 dev_loss=0.0797 dev_accuracy=0.9794
+Epoch 8/10 3.0s train_loss=0.0257 train_accuracy=0.9913 dev_loss=0.0846 dev_accuracy=0.9800
+Epoch 9/10 3.1s train_loss=0.0213 train_accuracy=0.9929 dev_loss=0.0885 dev_accuracy=0.9794
+Epoch 10/10 3.1s train_loss=0.0184 train_accuracy=0.9937 dev_loss=0.0874 dev_accuracy=0.9794
+Epoch 10 0.3s test_loss=0.0922 test_accuracy=0.9765
