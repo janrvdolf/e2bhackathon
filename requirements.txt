@@ -1,0 +1,4 @@
+anthropic==0.49.0
+e2b==1.2.1
+e2b-code-interpreter==1.1.1
+npfl138==2425.5.0  # for neural network training
