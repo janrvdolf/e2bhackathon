@@ -25,6 +25,7 @@ Setup API keys for Anthropic and E2B.
 ### Create a custom E2B sandbox
 
 > npm i -g @e2b/cli
+
 > e2b template build --name "torch_template" -c "/root/.jupyter/start-up.sh"
 
 ## Run
