@@ -103,16 +103,14 @@ for i in range(args.number_of_nn_architectures):
 
 # Pick the best neural network after training
 
-system_prompt = (
-    "You are a helpful assistant that is also an expert in neural networks." ""
-)
-prompt = f"You are given {args.number_of_nn_architectures} neural network architectures trained on MNIST dataset. Choose the best one and explain why."
+system_prompt = "You are a helpful assistant and an expert in neural networks." ""
+prompt = f"You are given {args.number_of_nn_architectures} neural network architectures trained on MNIST dataset. Choose the best one and explain why. Return JSON."
 
 train_outputs_prompts = []
 for i in range(args.number_of_nn_architectures):
     with open(
         os.path.join(
-            f"{args.output_dir_trainin}/train{i}.txt",
+            f"{args.output_dir_training}/train{i}.txt",
         ),
         "r",
     ) as file:
@@ -133,6 +131,9 @@ response = client.messages.create(
         ],
     ],
 )
+
+print("Response: ")
+print(response.content[0])
 
 # Extract code from response
 explanation = response.content[0].text
