@@ -36,4 +36,9 @@ Setup API keys for Anthropic and E2B.
 
 > python main.py
 
+There are three stages: 
+ - neural network generation using LLM and E2B
+ - training
+ - evaluation by LLM to decide the best architecture trained from generated architectures
+
 Generated neural network architectures are stored in the *generated_nn_architectures* dir and their training logs are stored in the *generated_nn_architectures_training* dir. 
