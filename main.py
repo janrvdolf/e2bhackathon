@@ -12,7 +12,7 @@ from e2b_code_interpreter import Sandbox
 args_parser = argparse.ArgumentParser()
 args_parser.add_argument(
     "--number_of_nn_architectures",
-    default=5,
+    default=3,
     type=int,
     help="Number of neural networks you want to generate.",
 )
@@ -85,6 +85,10 @@ for i in range(args.number_of_nn_architectures):
                         f'Writing candidate neural network to a file "__output_code_{i}.py"...'
                     )
                     file.write(code)
+
+                print("Generated neural network architecture:")
+                print(code)
+                print("\n")
             else:
                 print("E2B execution run: ", i, "has an error - skipping...")
                 print(execution.error)
