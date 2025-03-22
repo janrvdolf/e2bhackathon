@@ -1,18 +1,22 @@
 # Toy Neural Architecture Search with E2B and Anthropic for MNIST Classification
 
-What? 
+### What? 
 
-Machine learning engineers create neural network architectures using tedious work. There is a approache like neural architecture search to iterate basic neural network building blocks in for loops to automate the process, which is limited that could be. We tried to combine LLM and E2B for the search.
+Machine learning engineers typically design neural network architectures through tedious manual effort. Approaches such as Neural Architecture Search automate this process by iteratively evaluating basic neural network building blocks, but these methods have limitations. We attempted to combine LLM and E2B to enhance this search process.
 
-How? 
+### How? 
 
-We use LLM to design a neural network in pytorch for the toy problem  - MNIST classification (classify an image with a number to a correct class). Validate the model using E2B to make sure the training can be done. Train the model and pick the best architecture.
+We use an LLM to design a neural network in PyTorch for a toy problem—MNIST classification (classifying an image containing a digit into the correct class). We validate the model using E2B to ensure that training can be successfully completed. Finally, we train the models and select the best-performing architecture.
 
-**We used E2B to validate the LLM provided valid Python code in Pytorch with the help of a custom sandbox.**
+**We used E2B along with a custom sandbox to validate that the LLM provided correct Python code in PyTorch.**
+
+### Next Next
+
+Add your custom dataset, make custom features search and use deep search with the latest code and papers available. You will get the best models #noFOMO.
 
 ## Install
 
-Make sure you have *Python 3.12* and latest *npm*.
+Make sure you have *Python 3.12* and the latest *npm*.
 
 ### Setup API keys
 
