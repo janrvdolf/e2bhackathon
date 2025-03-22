@@ -22,7 +22,7 @@ Setup API keys for Anthropic and E2B.
 
 ### E2B Sandbox
 
-Create a custon E2B sandbox.
+Create a custom E2B sandbox.
 
 ## Run
 
