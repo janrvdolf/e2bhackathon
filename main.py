@@ -147,38 +147,38 @@ response = client.messages.create(
     ],
 )
 
-response_json = json.loads(response.content[0].text)
+print(response.content[0].text)
 
 
-print("🏆 The best network: ")
-print("Best network: ", response_json["best_network"])
-print("Explanation: ", response_json["explanation"])
+# print("🏆 The best network: ")
+# print("Best network: ", response_json["best_network"])
+# print("Explanation: ", response_json["explanation"])
 
-print("\n Architecture:")
-print(
-    open(
-        os.path.join(
-            args.output_dir,
-            f"__output_code_{response_json['best_network']}.py",
-        ),
-        "r",
-    ).read()
-)
+# print("\n Architecture:")
+# print(
+#     open(
+#         os.path.join(
+#             args.output_dir,
+#             f"__output_code_{response_json['best_network']}.py",
+#         ),
+#         "r",
+#     ).read()
+# )
 
 
-print("\n Training run:")
-print(
-    open(
-        os.path.join(
-            args.output_dir_training,
-            f"train{response_json['best_network']}.txt",
-        ),
-        "r",
-    ).read()
-)
+# print("\n Training run:")
+# print(
+#     open(
+#         os.path.join(
+#             args.output_dir_training,
+#             f"train{response_json['best_network']}.txt",
+#         ),
+#         "r",
+#     ).read()
+# )
 
 # Extract code from response
-explanation = response.content[0].text
+# explanation = response.content[0].text
 
-with open("best_neural_network.txt", "w") as f:
-    f.write(explanation)
+# with open("best_neural_network.txt", "w") as f:
+#     f.write(explanation)
