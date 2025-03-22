@@ -116,7 +116,7 @@ for i in range(args.number_of_nn_architectures):
 
 # Pick the best trained neural network
 
-print("\n🤖 Picking the best neural network...")
+print("\n🤖 Picking the best neural network...\n")
 
 system_prompt = "You are a helpful assistant and an expert in neural networks." ""
 prompt = f'You are given {args.number_of_nn_architectures} neural network architectures trained on MNIST dataset. Choose the best one and explain why. Return JSON {{"best_network": <int>., "explanation": <str>}}.'
