@@ -4,6 +4,7 @@ This script is used to generate neural network architectures using the Anthropic
 
 import argparse
 import os
+import json
 from anthropic import Anthropic
 from e2b_code_interpreter import Sandbox
 
@@ -11,7 +12,7 @@ from e2b_code_interpreter import Sandbox
 args_parser = argparse.ArgumentParser()
 args_parser.add_argument(
     "--number_of_nn_architectures",
-    default=3,
+    default=1,
     type=int,
     help="Number of neural networks you want to generate.",
 )
@@ -30,6 +31,8 @@ args_parser.add_argument(
 args = args_parser.parse_args()
 
 # Neural architecture search
+
+print("🤖 Generate neural network architectures using E2B...")
 
 client = Anthropic()
 system_prompt = "You are a helpful assistant that can execute python code in a safe environment. Only respond with the code to be executed and nothing else. Strip backticks in code blocks."
@@ -68,7 +71,7 @@ for i in range(args.number_of_nn_architectures):
 
             if not execution.error:
                 result = execution.text
-                print("Execution run: ", i, "is successful")
+                print("E2B execution run: ", i, "is successful - saving...")
 
                 # Write file to local filesystem
                 with open(
@@ -83,12 +86,16 @@ for i in range(args.number_of_nn_architectures):
                     )
                     file.write(code)
             else:
-                print("Execution run: ", i, "has an error")
+                print("E2B execution run: ", i, "has an error - skipping...")
                 print(execution.error)
 
 # Train neural networks
 
+print("\n🤖 Train neural networks...")
+
 for i in range(args.number_of_nn_architectures):
+    print(f"Neural network {i} (wait a minute):")
+    training_log_path = f"{args.output_dir_training}/train{i}.txt"
     os.system(
         " ".join(
             [
@@ -96,12 +103,16 @@ for i in range(args.number_of_nn_architectures):
                 "mnist_training.py",
                 "--generated_nn_architecture",
                 f"generated_nn_architectures.__output_code_{i}",
-                f">{args.output_dir_training}/train{i}.txt",
+                f">{training_log_path}",
             ]
         )
     )
+    with open(training_log_path, "r") as file:
+        print(file.read())
 
-# Pick the best neural network after training
+# Pick the best trained neural network
+
+print("\n🤖 Picking the best neural network...")
 
 system_prompt = "You are a helpful assistant and an expert in neural networks." ""
 prompt = f"You are given {args.number_of_nn_architectures} neural network architectures trained on MNIST dataset. Choose the best one and explain why. Return JSON."
@@ -135,7 +146,15 @@ response = client.messages.create(
 print("Response: ")
 print(response.content[0])
 
+response_json = json.loads(response.content[0].text)
+
+print("JSON reponse: ", response_json)
+
+
 # Extract code from response
 explanation = response.content[0].text
 
 print("The best neural network: ", explanation)
+
+with open("best_neural_network.txt", "w") as f:
+    f.write(explanation)
